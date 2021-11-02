@@ -1,0 +1,50 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package scene;
+
+import java.awt.Graphics2D;
+import java.awt.event.KeyEvent;
+import java.util.ArrayList;
+import main.GamePanel;
+
+/**
+ *
+ * @author HP
+ */
+public class SceneManager {
+    private ArrayList<Scene> scenes;
+    private int currentScene=0;
+    private final int MENU_SCENE_INDEX=0;
+    private final int LEVEL1_SCENE_INDEX=1;
+    public SceneManager(GamePanel game){
+        scenes=new ArrayList<>();
+        scenes.add(new MenuScene(game));
+        scenes.add(new GameScene(game,1,2));
+    }
+    public void keyPress(KeyEvent key){
+        
+        this.scenes.get(currentScene).keyPress(key.getKeyCode());
+    }
+    public void keyTypes(KeyEvent key){
+        this.scenes.get(currentScene).keyTypes(key.getKeyCode());}
+    public void keyReleased(KeyEvent key){
+        this.scenes.get(currentScene).keyReleased(key.getKeyCode());
+    }
+    public void draw(Graphics2D g2d){
+        this.scenes.get(currentScene).draw(g2d);
+    }
+    public void update(){
+        this.scenes.get(currentScene).update();
+    }
+    public Scene getCurrentScene() {
+        return this.scenes.get(currentScene);
+    }
+    
+    public void setCurrentScene(int currentScene) {
+        this.currentScene = currentScene;
+    }
+    
+}
