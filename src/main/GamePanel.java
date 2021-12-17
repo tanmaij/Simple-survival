@@ -6,7 +6,6 @@
 package main;
 
 import asset.ImageManager;
-import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -14,7 +13,6 @@ import java.awt.GraphicsEnvironment;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import javax.swing.JPanel;
 import scene.SceneManager;
 
@@ -32,10 +30,9 @@ public class GamePanel extends JPanel implements Runnable,KeyListener{
     private final BufferedImage image;
     private final Screen screen;
     private final SceneManager sceneManager;
-    private final ImageManager asset;
+    public final ImageManager asset;
     public int width,height;
     
-    private int gameScene;
     public GamePanel(Screen screen){
         try{
             Font f = Font.createFont(Font.TRUETYPE_FONT, getClass().getResourceAsStream("/asset/04B_03__.TTF"));
@@ -91,6 +88,7 @@ public class GamePanel extends JPanel implements Runnable,KeyListener{
     @Override
     public void paintComponent(Graphics g){
         Graphics2D g2d=(Graphics2D)g;
+        g2d.clearRect(0, 0, this.width, this.height);
         g2d.drawImage(image, 0, 0, null);
     }
 
@@ -106,7 +104,7 @@ public class GamePanel extends JPanel implements Runnable,KeyListener{
 
     @Override
     public void keyReleased(KeyEvent e) {
-       // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+      this.sceneManager.keyReleased(e);
     }
     
 }

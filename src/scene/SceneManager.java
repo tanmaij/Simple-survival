@@ -16,13 +16,17 @@ import main.GamePanel;
  */
 public class SceneManager {
     private ArrayList<Scene> scenes;
+    GamePanel game;
     private int currentScene=0;
     private final int MENU_SCENE_INDEX=0;
     private final int LEVEL1_SCENE_INDEX=1;
+     GameScene gameScene;
     public SceneManager(GamePanel game){
+        this.game=game;
+        gameScene=new GameScene(game,1,2);
         scenes=new ArrayList<>();
-        scenes.add(new MenuScene(game));
-        scenes.add(new GameScene(game,1,2));
+        scenes.add(new MenuScene(game,this));
+        scenes.add(gameScene);
     }
     public void keyPress(KeyEvent key){
         
@@ -34,6 +38,7 @@ public class SceneManager {
         this.scenes.get(currentScene).keyReleased(key.getKeyCode());
     }
     public void draw(Graphics2D g2d){
+        g2d.clearRect(0, 0, this.game.width, this.game.height);
         this.scenes.get(currentScene).draw(g2d);
     }
     public void update(){
@@ -45,6 +50,11 @@ public class SceneManager {
     
     public void setCurrentScene(int currentScene) {
         this.currentScene = currentScene;
+        System.out.println(this.currentScene);
+        if(this.currentScene==1)
+        {
+            this.gameScene.newGame();
+        }
     }
     
 }

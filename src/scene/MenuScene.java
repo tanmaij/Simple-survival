@@ -44,12 +44,12 @@ public class MenuScene extends Scene{
     private final GamePanel game;
     private int currentChoice;
     private final String[] buttonChoice={"New Game","Continue","Exit"};
-    
-    public MenuScene(GamePanel game){
+    scene.SceneManager s;
+    public MenuScene(GamePanel game,SceneManager s){
         this.game=game;
         this.currentChoice=NEWGAME_CHOICE;
         this.state=MAIN_STATE;
-        
+        this.s=s;
     }
     @Override
     public void draw(Graphics2D g2d) {
@@ -173,7 +173,9 @@ public class MenuScene extends Scene{
                 this.state=MAIN_STATE;
             else
             {
-             
+             if(this.customState==CUSTOM_START)
+                this.s.setCurrentScene(1);
+                
             }
         }
         return;
@@ -244,6 +246,8 @@ public class MenuScene extends Scene{
             this.customState=CUSTOM_BACK;
             this.customDifficultState=CUSTOM_DIFFICULT_MEDIUM;
             this.customSizeState=CUSTOM_SIZE_MAP_MEDIUM;
+        }else if(choice==EXIT_CHOICE){
+            System.exit(0);
         }
     }
 

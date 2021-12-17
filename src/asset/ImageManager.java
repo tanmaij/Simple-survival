@@ -67,7 +67,7 @@ public class ImageManager {
         try {
             BufferedImage asset=ImageIO.read(getClass().getResourceAsStream("/asset/Pack2020x10.png"));
     player=new ArrayList<>(); //1000 200 0 300 // 1000 200 320 300
-    player.add(asset.getSubimage(1000,1, 200, 3000));
+    player.add(asset.getSubimage(1000,1, 200, 300));
     player.add(asset.getSubimage(1000,320, 200, 300));
     ironArrow=asset.getSubimage(3320,50, 240 , 240); //3320 240  50 240
     ironSword=asset.getSubimage(3540,70, 230, 320);//sword 3540 230 70 320
