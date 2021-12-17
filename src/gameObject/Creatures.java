@@ -12,7 +12,7 @@ import java.awt.image.BufferedImage;
  *
  * @author HP
  */
-public abstract class Creatures extends gameEntity{
+public abstract class Creatures extends GameEntity{
     BufferedImage img;
     float speed,damage,healpoint;
     float xForce,yForce;

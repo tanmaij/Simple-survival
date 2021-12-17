@@ -12,7 +12,7 @@ import gameObject.Player;
 import gameObject.ResourceEntity;
 import gameObject.RockResource;
 import gameObject.TreeResource;
-import gameObject.gameEntity;
+import gameObject.GameEntity;
 import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.image.BufferedImage;
@@ -32,7 +32,7 @@ public class GameScene extends Scene{
     int xCamera,yCamera;
     TileMap tileMap;
     GamePanel game;
-    ArrayList<gameEntity> entities;
+    ArrayList<GameEntity> entities;
     Player player;
     BufferedImage bfrimg;
     public GameScene(GamePanel game,int size, int difficult) {
@@ -135,8 +135,8 @@ public class GameScene extends Scene{
         
         if(this.tileMap !=null)
         g2s.drawImage(this.tileMap.mapImage,0,0,null);
-        entities.sort(Comparator.comparing(gameEntity::getEndPosition));
-        for (gameEntity entity : entities) {
+        entities.sort(Comparator.comparing(GameEntity::getEndPosition));
+        for (GameEntity entity : entities) {
             entity.draw(g2s);
         }
         g2d.drawImage(bfrimg, xCamera, yCamera, null);
@@ -145,7 +145,7 @@ public class GameScene extends Scene{
 
     @Override
     public void update() {       
-        for (gameEntity entity : entities) {
+        for (GameEntity entity : entities) {
             entity.update();
         }
         if(player!=null)

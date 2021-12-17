@@ -12,24 +12,26 @@ import java.awt.image.BufferedImage;
  *
  * @author HP
  */
-public class Player extends Creatures{
-    
-    BufferedImage img1,img2;
-    public Player(BufferedImage img,BufferedImage img2, int col, int row, float left, float right, float top, float bottom, float scale) {
+public class Player extends Creatures {
+
+    BufferedImage img1, img2;
+
+    public Player(BufferedImage img, BufferedImage img2, int col, int row, float left, float right, float top, float bottom, float scale) {
         super(img, col, row, left, right, top, bottom, scale);
-        this.img=img;
-        this.img1=img;
-        this.img2=img2;
-        System.out.println(this.getWidth() +"; "+this.getHeight());
-        System.out.println(this.getX() +"; "+this.getY());
+        this.img = img;
+        this.img1 = img;
+        this.img2 = img2;
+        System.out.println(this.getWidth() + "; " + this.getHeight());
+        System.out.println(this.getX() + "; " + this.getY());
     }
 
     @Override
     protected void updateExtends() {
-        
+
     }
-    public void keyDownListenner(int k){
-        switch(k){
+
+    public void keyDownListenner(int k) {
+        switch (k) {
             case KeyEvent.VK_W:
                 this.force(xForce, -5);
                 break;
@@ -42,11 +44,12 @@ public class Player extends Creatures{
             case KeyEvent.VK_D:
                 this.force(5, yForce);
                 break;
-                
+
         }
     }
-    public void keyReleaseListenner(int k){
-        switch(k){
+
+    public void keyReleaseListenner(int k) {
+        switch (k) {
             case KeyEvent.VK_W:
                 this.force(xForce, 0);
                 break;
@@ -59,25 +62,28 @@ public class Player extends Creatures{
             case KeyEvent.VK_D:
                 this.force(0, yForce);
                 break;
-                
+
         }
     }
 
+    @Override
     public float getX() {
         return x;
     }
 
+    @Override
     public void setX(float x) {
         this.x = x;
     }
 
+    @Override
     public float getY() {
         return y;
     }
 
+    @Override
     public void setY(float y) {
         this.y = y;
     }
-    
-    
+
 }

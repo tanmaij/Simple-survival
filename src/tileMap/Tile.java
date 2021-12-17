@@ -10,15 +10,17 @@ package tileMap;
  * @author HP
  */
 public class Tile {
+
     private boolean block;
     private final float x;
     private final float y;
-    public Tile(boolean block,int x,int y){
-        this.block=block;
-        this.x=x;
-        this.y=y;
+
+    public Tile(boolean block, int x, int y) {
+        this.block = block;
+        this.x = x;
+        this.y = y;
     }
-    
+
     public boolean isBlock() {
         return block;
     }
@@ -26,5 +28,5 @@ public class Tile {
     public void setBlock(boolean block) {
         this.block = block;
     }
-    
+
 }

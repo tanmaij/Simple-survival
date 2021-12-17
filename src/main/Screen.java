@@ -11,47 +11,47 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import javax.swing.JFrame;
 
-
-
 /**
  *
  * @author HP
  */
-public class Screen extends JFrame{
+public class Screen extends JFrame {
+
     int width;
     int height;
-    private int xScreen,yScreen;
+    private int xScreen, yScreen;
     private CardLayout layout;
     int stateScene;
     private GamePanel game;
     private Thread thread;
-    public Screen()
-    {
-        layout=new CardLayout();
-        this.width=Const.WIDTH_SCREEN*Const.SCALE_SCREEN;
-        this.height=Const.HEIGHT_SCREEN*Const.SCALE_SCREEN;
+
+    public Screen() {
+        layout = new CardLayout();
+        this.width = Const.WIDTH_SCREEN * Const.SCALE_SCREEN;
+        this.height = Const.HEIGHT_SCREEN * Const.SCALE_SCREEN;
         super.setTitle("Simple survival");
-        super.setSize(this.width,this.height);
+        super.setSize(this.width, this.height);
         super.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.addnotify();
         this.setPositionCenter();
         super.setLayout(layout);
-        this.game=new GamePanel(this);
-        this.thread=new Thread(game);
+        this.game = new GamePanel(this);
+        this.thread = new Thread(game);
         this.thread.start();
         super.add(this.game);
         this.game.setFocusable(true);
         this.game.requestFocus();
         super.setVisible(true);
     }
-    private void addnotify(){
+
+    private void addnotify() {
         super.addNotify();
     }
-    private void setPositionCenter()
-    {
-        Dimension SIZE=Toolkit.getDefaultToolkit().getScreenSize();
-        int x=(SIZE.width)/2-(this.width)/2;
-        int y=(SIZE.height)/2-(this.height)/2;
+
+    private void setPositionCenter() {
+        Dimension SIZE = Toolkit.getDefaultToolkit().getScreenSize();
+        int x = (SIZE.width) / 2 - (this.width) / 2;
+        int y = (SIZE.height) / 2 - (this.height) / 2;
         super.setLocation(x, y);
     }
 
@@ -70,6 +70,5 @@ public class Screen extends JFrame{
     public void setxScreen(int xScreen) {
         this.xScreen = xScreen;
     }
-    
-    
+
 }

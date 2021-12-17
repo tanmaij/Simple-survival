@@ -20,74 +20,76 @@ import scene.SceneManager;
  *
  * @author HP
  */
-public class GamePanel extends JPanel implements Runnable,KeyListener{
-    
+public class GamePanel extends JPanel implements Runnable, KeyListener {
+
     public Font gameFont;
-    
-    private final int MENU_SCENE=0;
-    private final int GAME_SCENE=1;
-    
+
+    private final int MENU_SCENE = 0;
+    private final int GAME_SCENE = 1;
+
     private final BufferedImage image;
     private final Screen screen;
     private final SceneManager sceneManager;
     public final ImageManager asset;
-    public int width,height;
-    
-    public GamePanel(Screen screen){
-        try{
+    public int width, height;
+
+    public GamePanel(Screen screen) {
+        try {
             Font f = Font.createFont(Font.TRUETYPE_FONT, getClass().getResourceAsStream("/asset/04B_03__.TTF"));
             GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
             ge.registerFont(f);
-        }catch(Exception e){
+        } catch (Exception e) {
             System.out.println(e);
         }
 
-
-        this.screen=screen;
-        this.width=screen.width;
-        this.height=screen.height;
+        this.screen = screen;
+        this.width = screen.width;
+        this.height = screen.height;
         super.setSize(screen.width, screen.height);
-        this.asset=new ImageManager();
-        this.image=new BufferedImage(screen.width, screen.height,BufferedImage.TYPE_INT_RGB);
-        this.sceneManager=new SceneManager(this);
+        this.asset = new ImageManager();
+        this.image = new BufferedImage(screen.width, screen.height, BufferedImage.TYPE_INT_RGB);
+        this.sceneManager = new SceneManager(this);
         this.sceneManager.setCurrentScene(MENU_SCENE);
         this.addKeyListener(this);
     }
-    private final int Fps=60;
-    private final long TargetTime=1000/Fps;
-    boolean running=true;
+    private final int Fps = 60;
+    private final long TargetTime = 1000 / Fps;
+    boolean running = true;
     long El;
     long wait;
     long start;
+
     @Override
     public void run() {
-        while(running==true)
-        {
-        
-         update();
-         draw();
-         repaint();
-         start=System.nanoTime();
-         El=System.nanoTime()-start;
-         wait=TargetTime-El/1000000;
+        while (running == true) {
+
+            update();
+            draw();
+            repaint();
+            start = System.nanoTime();
+            El = System.nanoTime() - start;
+            wait = TargetTime - El / 1000000;
             try {
-            Thread.sleep(wait);
+                Thread.sleep(wait);
             } catch (InterruptedException ex) {
-               
+
             }
-        }   
+        }
     }
-    private void draw(){
-        Graphics2D g2d=(Graphics2D) image.getGraphics();
+
+    private void draw() {
+        Graphics2D g2d = (Graphics2D) image.getGraphics();
         this.sceneManager.draw(g2d);
-        
+
     }
-    private void update(){
+
+    private void update() {
         this.sceneManager.update();
     }
+
     @Override
-    public void paintComponent(Graphics g){
-        Graphics2D g2d=(Graphics2D)g;
+    public void paintComponent(Graphics g) {
+        Graphics2D g2d = (Graphics2D) g;
         g2d.clearRect(0, 0, this.width, this.height);
         g2d.drawImage(image, 0, 0, null);
     }
@@ -99,12 +101,12 @@ public class GamePanel extends JPanel implements Runnable,KeyListener{
 
     @Override
     public void keyPressed(KeyEvent e) {
-       this.sceneManager.keyPress(e);
+        this.sceneManager.keyPress(e);
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
-      this.sceneManager.keyReleased(e);
+        this.sceneManager.keyReleased(e);
     }
-    
+
 }

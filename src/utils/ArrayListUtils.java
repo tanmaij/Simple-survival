@@ -6,7 +6,7 @@
 package utils;
 
 import gameObject.ResourceEntity;
-import gameObject.gameEntity;
+import gameObject.GameEntity;
 import java.util.ArrayList;
 
 /**
@@ -14,8 +14,8 @@ import java.util.ArrayList;
  * @author HP
  */
 public class ArrayListUtils {
-    static public boolean rowColIsExist(ArrayList<gameEntity> list, int col, int row){
-        for (gameEntity gameEntity1 : list) {
+    static public boolean rowColIsExist(ArrayList<GameEntity> list, int col, int row){
+        for (GameEntity gameEntity1 : list) {
             if(gameEntity1.getCol()==col && gameEntity1.getRow()==row)
                 return true;
         }

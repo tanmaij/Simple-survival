@@ -11,11 +11,11 @@ import java.awt.image.BufferedImage;
  *
  * @author HP
  */
-public class IronResource extends ResourceEntity{
-    
-    public IronResource(BufferedImage img,int col, int row, float left, float right, float top, float bottom, float scale) {
+public class IronResource extends ResourceEntity {
+
+    public IronResource(BufferedImage img, int col, int row, float left, float right, float top, float bottom, float scale) {
         super(col, row, img.getWidth(), img.getHeight(), left, right, top, bottom, scale);
-        this.img=img;
+        this.img = img;
     }
-    
+
 }

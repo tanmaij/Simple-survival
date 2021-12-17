@@ -11,11 +11,11 @@ import java.awt.Graphics2D;
  *
  * @author HP
  */
-public abstract class gameEntity {
+public abstract class GameEntity {
     protected int col,row;
     protected float x,y,width,height,xBox,yBox,widthBox,heigthBox,left,right,top,bottom,scale;
 
-    public gameEntity(int col, int row,  float width, float height, float left, float right, float top, float bottom, float scale) {
+    public GameEntity(int col, int row,  float width, float height, float left, float right, float top, float bottom, float scale) {
         this.scale = scale;
         this.col = col;
         this.row = row;
