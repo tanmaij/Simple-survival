@@ -98,15 +98,15 @@ public class GameScene extends Scene{
             
             {
                if(ranSrc==0)
-                this.entities.add(new TreeResource(this.game.asset.tree,ranCol,ranRow, 85, 85, 0, 0, 1f/3f));
+                this.entities.add(new TreeResource(this.game.asset.tree,ranCol,ranRow, 90, 90, 300, 0, 1f/3f));
              else if(ranSrc==1)
-                this.entities.add(new CoalResource(this.game.asset.coalMine,ranCol,ranRow, 85, 85, 0, 0, 1f/4f));
+                this.entities.add(new CoalResource(this.game.asset.coalMine,ranCol,ranRow, 0, 0, 100, 0, 1f/4f));
               else if(ranSrc==2)
-                this.entities.add(new FruitResource(this.game.asset.redBush,this.game.asset.redBushEmpty, ranCol,ranRow, 85, 85, 0, 0, 1f/4f));
+                this.entities.add(new FruitResource(this.game.asset.redBush,this.game.asset.redBushEmpty, ranCol,ranRow, 0, 0, 150, 0, 1f/4f));
              else if(ranSrc==3)
-                this.entities.add(new IronResource(this.game.asset.ironMine, ranCol,ranRow, 85, 85, 0, 0, 1f/4f));
+                this.entities.add(new IronResource(this.game.asset.ironMine, ranCol,ranRow, 0, 0, 100, 0, 1f/4f));
               else if(ranSrc==4)
-                this.entities.add(new RockResource(this.game.asset.rockMine, ranCol,ranRow, 85, 85, 0, 0, 1f/4f));
+                this.entities.add(new RockResource(this.game.asset.rockMine, ranCol,ranRow, 0, 0, 100, 0, 1f/4f));
                
             }
             }
@@ -123,7 +123,7 @@ public class GameScene extends Scene{
            else
             break;
         }
-        this.player=new Player(this.game.asset.player.get(0), this.game.asset.player.get(1), ranColPlayer, ranRowPlayer, 0, 0, 250, 0, 1f/5f);
+        this.player=new Player(this.game.asset.player.get(0), this.game.asset.player.get(1), ranColPlayer, ranRowPlayer, 0, 0, 250, 0, 1f/5f,this);
         this.entities.add(player);
         
     }
@@ -179,6 +179,10 @@ public class GameScene extends Scene{
     @Override
     public void keyReleased(int key) {
         this.player.keyReleaseListenner(key);
+    }
+
+    public ArrayList<GameEntity> getEntities() {
+        return entities;
     }
     
 }

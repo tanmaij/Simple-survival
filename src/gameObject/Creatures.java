@@ -7,6 +7,8 @@ package gameObject;
 
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+import main.GamePanel;
+import scene.GameScene;
 
 /**
  *
@@ -20,18 +22,23 @@ public abstract class Creatures extends GameEntity {
     protected int stateDirection;
     private final int STATE_DIR_LEFT = 1;
     private final int STATE_DIR_RIGHT = -1;
-
-    public Creatures(BufferedImage img, int col, int row, float left, float right, float top, float bottom, float scale) {
+    GameScene gameScene;
+    public Creatures(BufferedImage img, int col, int row, float left, float right, float top, float bottom, float scale,GameScene gameScene) {
+        
         super(col, row, img.getWidth(), img.getHeight(), left, right, top, bottom, scale);
+        this.gameScene=gameScene;
         x = (float) (((float) this.getRow() * 47 + 47 / 2.0 - this.getWidth() / 2.0));
         y = (float) (((float) this.getCol() * 47 + 47 / 2.0 - this.getHeight() / 2.0));
         xBox = (this.getX() + this.getLeft());
-        xBox = (this.getY() + this.getTop());
+        yBox = (this.getY() + this.getTop());
         this.stateDirection = STATE_DIR_LEFT;
         this.img = img;
     }
 
     private void updateBox() {
+        xBox = (this.getX() + this.getLeft());
+        yBox = (this.getY() + this.getTop());
+        System.err.println(xBox+" "+yBox+" "+widthBox+" "+heigthBox);
     }
 
     public void force(float xForce, float yForce) {
@@ -52,16 +59,65 @@ public abstract class Creatures extends GameEntity {
 
     @Override
     public void update() {
+        
+        updateBox();
         if (xForce > 0) {
             this.stateDirection = STATE_DIR_RIGHT;
         } else if (xForce < 0) {
             this.stateDirection = STATE_DIR_LEFT;
         }
-        this.x = x + this.xForce;
-        this.y = y + this.yForce;
+        float xToUpdate=xForce;
+        float yToUpdate=yForce;
 
-        updateBox();
+        if(this.xForce>0)
+            if(checkCollisionLeft())
+                xToUpdate=0;
+        if(this.xForce<0)
+            if(checkCollisionRight())
+                xToUpdate=0;
+        if(this.yForce>0)
+            if(checkCollisionTop())
+                yToUpdate=0;
+         if(this.yForce<0)
+            if(checkCollisionBottom())
+                yToUpdate=0;
+        this.x = x + xToUpdate;
+        this.y = y + yToUpdate;
+
         updateExtends();
     }
+    boolean checkCollisionLeft()
+    {
+        for (GameEntity gameEntity : this.gameScene.getEntities()) {
+            if(gameEntity.checkCollisionLeft(this))
+                return true;
+        }
+        return false;
+    }
+    boolean checkCollisionRight()
+    {
+        for (GameEntity gameEntity : this.gameScene.getEntities()) {
+            if(gameEntity.checkCollisionRight(this))
+                return true;
+        }
+        return false;
+    }
+    boolean checkCollisionTop()
+    {
+        for (GameEntity gameEntity : this.gameScene.getEntities()) {
+            if(gameEntity.checkCollisionTop(this))
+                return true;
+        }
+        return false;
+    }
+    boolean checkCollisionBottom()
+    {
+        for (GameEntity gameEntity : this.gameScene.getEntities()) {
+            if(gameEntity.checkCollisionBottom(this))
+                return true;
+        }
+        return false;
+    }
+             
 
 }

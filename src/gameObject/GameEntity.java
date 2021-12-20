@@ -31,6 +31,10 @@ public abstract class GameEntity {
     }
     public abstract void draw(Graphics2D g2s);
     public abstract void update();
+    protected abstract boolean checkCollisionLeft( Creatures creatures );
+    protected abstract boolean checkCollisionRight( Creatures creatures );
+    protected abstract boolean checkCollisionTop( Creatures creatures );
+    protected abstract boolean checkCollisionBottom( Creatures creatures );
     public int getCol() {
         return col;
     }
@@ -153,6 +157,4 @@ public abstract class GameEntity {
     public void setScale(float scale) {
         this.scale = scale;
     }
-    
-    
 }

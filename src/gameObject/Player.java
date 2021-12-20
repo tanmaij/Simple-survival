@@ -9,12 +9,12 @@ import gameObject.animation.Animation;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
+import scene.GameScene;
 
 /**
  *
  * @author HP
  */
-
 public class Player extends Creatures {
 
     private final int STATE_ANIMATION_IDLE = 0;
@@ -24,8 +24,8 @@ public class Player extends Creatures {
     Animation animation;
     int stateAnimation;
 
-    public Player(BufferedImage img, BufferedImage img2, int col, int row, float left, float right, float top, float bottom, float scale) {
-        super(img, col, row, left, right, top, bottom, scale);
+    public Player(BufferedImage img, BufferedImage img2, int col, int row, float left, float right, float top, float bottom, float scale, GameScene gameScene) {
+        super(img, col, row, left, right, top, bottom, scale, gameScene);
         this.img = img;
         this.img1 = img;
         this.img2 = img2;
@@ -106,5 +106,27 @@ public class Player extends Creatures {
     public void setY(float y) {
         this.y = y;
     }
+
+    @Override
+    protected boolean checkCollisionLeft(Creatures creatures) {
+        return false;
+    }
+
+    @Override
+    protected boolean checkCollisionRight(Creatures creatures) {
+        return false;
+    }
+
+    @Override
+    protected boolean checkCollisionTop(Creatures creatures) {
+        return false;
+    }
+
+    @Override
+    protected boolean checkCollisionBottom(Creatures creatures) {
+        return false;
+    }
+
+  
 
 }

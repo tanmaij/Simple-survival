@@ -15,13 +15,13 @@ import java.awt.image.BufferedImage;
 public class ResourceEntity extends GameEntity {
 
     protected BufferedImage img;
-
+    protected int numResource;
     public ResourceEntity(int col, int row, float width, float height, float left, float right, float top, float bottom, float scale) {
         super(col, row, width, height, left, right, top, bottom, scale);
         x = (float) (((float) this.getRow() * 47 + 47 / 2.0 - this.getWidth() / 2.0));
         y = (float) (((float) this.getCol() * 47 + 47 / 2.0 - this.getHeight() / 2.0));
         xBox = (this.getX() + this.getLeft());
-        xBox = (this.getY() + this.getTop());
+        yBox = (this.getY() + this.getTop());
     }
 
     @Override
@@ -33,4 +33,42 @@ public class ResourceEntity extends GameEntity {
     public void update() {
 
     }
+    public boolean checkCollisionLeft( Creatures creatures )
+    {
+      float xBox= creatures.getxBox();
+      float yBox= creatures.getyBox();
+      float wBox= creatures.getWidthBox();
+      float hBox= creatures.getHeigthBox();
+      return ((xBox+wBox)>=this.xBox && (xBox+wBox)<=this.xBox+this.widthBox  && (yBox < this.yBox+this.heigthBox && yBox+hBox>this.yBox));
+    }
+
+    @Override
+    protected boolean checkCollisionRight(Creatures creatures) {
+       float xBox= creatures.getxBox();
+      float yBox= creatures.getyBox();
+      float wBox= creatures.getWidthBox();
+      float hBox= creatures.getHeigthBox();
+      return ((xBox)<=this.xBox+this.widthBox && (xBox+wBox)>=this.xBox+this.widthBox  && (yBox < this.yBox+this.heigthBox && yBox+hBox>this.yBox));
+    
+    }
+
+    @Override
+    protected boolean checkCollisionTop(Creatures creatures) {
+      float xBox= creatures.getxBox();
+      float yBox= creatures.getyBox();
+      float wBox= creatures.getWidthBox();
+      float hBox= creatures.getHeigthBox();
+      return ((xBox)<=this.xBox+this.widthBox && (xBox+wBox)>=this.xBox  && (yBox < this.yBox+this.heigthBox && yBox+hBox>=this.yBox));
+    
+    }
+
+    @Override
+    protected boolean checkCollisionBottom(Creatures creatures) {
+       float xBox= creatures.getxBox();
+      float yBox= creatures.getyBox();
+      float wBox= creatures.getWidthBox();
+      float hBox= creatures.getHeigthBox();
+      return ((xBox)<=this.xBox+this.widthBox && (xBox+wBox)>=this.xBox  && (yBox+hBox > this.yBox && yBox<=this.yBox+this.heigthBox));
+    }
+    
 }

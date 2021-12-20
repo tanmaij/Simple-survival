@@ -4,22 +4,12 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/E:/java/Simple%20survival/src/gameObject/ResourceEntity.java</file>
-            <file>file:/E:/java/Simple%20survival/src/gameObject/FruitResource.java</file>
-            <file>file:/E:/java/Simple%20survival/src/scene/MenuScene.java</file>
-            <file>file:/E:/java/Simple%20survival/src/asset/ImageManager.java</file>
-            <file>file:/E:/java/Simple%20survival/src/scene/Scene.java</file>
-            <file>file:/E:/java/Simple%20survival/src/asset/Pack2020x10.png</file>
-            <file>file:/E:/java/Simple%20survival/src/tileMap/Tile.java</file>
-            <file>file:/E:/java/Simple%20survival/src/scene/GameScene.java</file>
             <file>file:/E:/java/Simple%20survival/src/gameObject/TreeResource.java</file>
-            <file>file:/E:/java/Simple%20survival/src/tileMap/TileMap.java</file>
-            <file>file:/E:/java/Simple%20survival/src/utils/ArrayListUtils.java</file>
-            <file>file:/E:/java/Simple%20survival/src/main/Screen.java</file>
-            <file>file:/E:/java/Simple%20survival/src/main/GamePanel.java</file>
-            <file>file:/E:/java/Simple%20survival/src/scene/SceneManager.java</file>
-            <file>file:/E:/java/Simple%20survival/src/gameObject/IronResource.java</file>
-            <file>file:/E:/java/Simple%20survival/src/main/Const.java</file>
-            <file>file:/E:/java/Simple%20survival/src/gameObject/gameEntity.java</file>
+            <file>file:/E:/java/Simple%20survival/src/scene/GameScene.java</file>
+            <file>file:/E:/java/Simple%20survival/src/gameObject/CoalResource.java</file>
+            <file>file:/E:/java/Simple%20survival/src/gameObject/Player.java</file>
+            <file>file:/E:/java/Simple%20survival/src/gameObject/GameEntity.java</file>
+            <file>file:/E:/java/Simple%20survival/src/gameObject/Creatures.java</file>
         </group>
     </open-files>
 </project-private>
