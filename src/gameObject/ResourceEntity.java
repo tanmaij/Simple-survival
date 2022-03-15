@@ -68,7 +68,7 @@ public class ResourceEntity extends GameEntity {
       float yBox= creatures.getyBox();
       float wBox= creatures.getWidthBox();
       float hBox= creatures.getHeigthBox();
-      return ((xBox)<=this.xBox+this.widthBox && (xBox+wBox)>=this.xBox  && (yBox+hBox > this.yBox && yBox<=this.yBox+this.heigthBox));
+      return ((xBox)<=this.xBox+this.widthBox && (xBox+wBox)>=this.xBox  && (yBox > this.yBox && yBox<=this.yBox+this.heigthBox));
     }
     
 }

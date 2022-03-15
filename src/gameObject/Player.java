@@ -34,8 +34,8 @@ public class Player extends Creatures {
         images.add(img2);
         this.animation = new Animation(0.3f, images);
         this.stateAnimation = STATE_ANIMATION_IDLE;
-        System.out.println(this.getWidth() + "; " + this.getHeight());
-        System.out.println(this.getX() + "; " + this.getY());
+        this.healpoint=100;
+        this.hunryPoint=100;
     }
 
     @Override

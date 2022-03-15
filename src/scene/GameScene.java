@@ -13,8 +13,10 @@ import gameObject.ResourceEntity;
 import gameObject.RockResource;
 import gameObject.TreeResource;
 import gameObject.GameEntity;
+import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Point;
+import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -140,6 +142,7 @@ public class GameScene extends Scene{
             entity.draw(g2s);
         }
         g2d.drawImage(bfrimg, xCamera, yCamera, null);
+        this.drawUI(g2d);
         }
     }
 
@@ -183,6 +186,21 @@ public class GameScene extends Scene{
 
     public ArrayList<GameEntity> getEntities() {
         return entities;
+    }
+    private void drawUI(Graphics2D g2d)
+    {
+        float max=400,witdh=25;
+        
+        float hp=this.player.getHealpoint();
+        float hunry=this.player.getHunryPoint();
+        g2d.setColor(Color.BLACK);
+        g2d.fillRect(25,25,(int)max,25);
+        g2d.setColor(Color.red);
+        g2d.fillRect(25,25,(int)(max*hp/100),25);
+        g2d.setColor(Color.BLACK);
+        g2d.fillRect(25,75,(int)max,25);
+        g2d.setColor(Color.green);
+        g2d.fillRect(25,75,(int)(max*hp/100),25);
     }
     
 }

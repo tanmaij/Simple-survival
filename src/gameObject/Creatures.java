@@ -17,7 +17,7 @@ import scene.GameScene;
 public abstract class Creatures extends GameEntity {
 
     BufferedImage img;
-    float speed, damage, healpoint;
+    float speed, damage, healpoint,hunryPoint;
     protected float xForce, yForce;
     protected int stateDirection;
     private final int STATE_DIR_LEFT = 1;
@@ -117,6 +117,12 @@ public abstract class Creatures extends GameEntity {
                 return true;
         }
         return false;
+    }
+    public float getHealpoint(){
+        return this.healpoint;
+    }
+    public float getHunryPoint(){
+        return this.hunryPoint;
     }
              
 
